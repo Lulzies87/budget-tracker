@@ -16,7 +16,7 @@ export const categories = [
 
 type TransactionType = (typeof transactionTypes)[number];
 export type Category = (typeof categories)[number];
-interface Transaction {
+export interface Transaction {
   type: TransactionType;
   amount: Number;
   category: Category;
@@ -24,3 +24,7 @@ interface Transaction {
 }
 
 export let transactions: Transaction[] = [];
+const retrieveTransactions = localStorage.getItem("transactions");
+if (retrieveTransactions) {
+  transactions = JSON.parse(retrieveTransactions);
+}

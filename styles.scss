@@ -14,14 +14,13 @@ html {
 }
 
 body {
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     max-width: 74ch;
     padding: 0.8rem;
 }
 
 .section {
     margin-top: 1rem;
-    margin-left: 2rem;
     padding-left: 0.8rem;
     padding-bottom: 0.6rem;
     border: 1px solid black;
@@ -29,7 +28,14 @@ body {
 
 .logTransactionForm {
     background-color: antiquewhite;
-    max-width: 23ch;
+    max-width: 25ch;
+    margin-left: 1.8rem;
     padding-left: 0.8rem;
     padding-bottom: 0.2rem;
+}
+
+#transactionHistory {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }

@@ -14,3 +14,7 @@ export const categories = [
     "Miscellaneous",
 ];
 export let transactions = [];
+const retrieveTransactions = localStorage.getItem("transactions");
+if (retrieveTransactions) {
+    transactions = JSON.parse(retrieveTransactions);
+}

@@ -1,4 +1,4 @@
-import { categories, transactionTypes } from "./budget-tracker.model.js";
+import { Transaction, categories, transactionTypes, transactions } from "./budget-tracker.model.js";
 
 export function loadFormFields() {
   const dateInput = document.getElementById("date") as HTMLInputElement;
@@ -15,4 +15,18 @@ export function loadFormFields() {
   function toOption(element: string) {
     return `<option value="${element}">${element}</option>`;
   }
+}
+
+export function displayTransactions() {
+    const container = document.getElementById("transactionHistory");
+    container!.innerHTML = `${transactions.map(showTransaction).join("\n")}`;
+}
+
+function showTransaction(transaction: Transaction) {
+    return `
+    <li>${transaction.date}</li>
+    <li>${transaction.type}</li>
+    <li>${transaction.amount}</li>
+    <li>${transaction.category}</li>
+    `;
 }
