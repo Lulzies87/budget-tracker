@@ -27,9 +27,9 @@ body {
 }
 
 .logTransactionForm {
-    background-color: antiquewhite;
+    background-color: rgb(255, 244, 231);
     max-width: 25ch;
-    margin-left: 1.8rem;
+    margin-left: 1.2rem;
     padding-left: 0.8rem;
     padding-bottom: 0.2rem;
 }
@@ -38,4 +38,20 @@ body {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+.sumRow {
+    margin-left: 2rem;
+}
+
+.sumField {
+    font-weight: bold;
+}
+
+#totalIncome {
+    color: green;
+}
+
+#totalExpense {
+    color: red;
 }
