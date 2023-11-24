@@ -52,6 +52,5 @@ function calculateSum(type) {
             total += transation.amount;
         }
     });
-    console.log(total);
     return total;
 }

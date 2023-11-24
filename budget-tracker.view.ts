@@ -72,6 +72,5 @@ function calculateSum(type: TransactionType) {
     }
   });
 
-  console.log(total);
   return total;
 }
