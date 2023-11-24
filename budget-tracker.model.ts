@@ -12,6 +12,7 @@ export const categories = [
   "Insurance",
   "Travel",
   "Miscellaneous",
+  "Salary",
 ] as const;
 
 export type TransactionType = (typeof transactionTypes)[number];

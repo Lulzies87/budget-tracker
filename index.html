@@ -23,21 +23,21 @@
         <form class="logTransactionForm" name="log-transaction" action="">
             <div class="formInput">
                 <label for="date">When:</label>
-                <input name="dateInput" type="date" id="date">
+                <input name="dateInput" type="date" id="date" required />
             </div>
             <div class="formInput">
                 <label for="type">Income/Expense:</label>
-                <select name="typeInput" id="type">
+                <select name="typeInput" id="type" required>
                     <option value="Income">Income</option>
                 </select>
             </div>
             <div class="formInput">
                 <label for="amount">How much:</label>
-                <input name="amountInput" type="text" id="amount">
+                <input name="amountInput" type="text" id="amount" required />
             </div>
             <div class="formInput">
                 <label for="category">What for:</label>
-                <select name="categoryInput" id="category">
+                <select name="categoryInput" id="category" required>
                     <option value="Housing">Housing</option>
                 </select>
             </div>

@@ -12,6 +12,7 @@ export const categories = [
     "Insurance",
     "Travel",
     "Miscellaneous",
+    "Salary",
 ];
 export let transactions = [];
 const retrieveTransactions = localStorage.getItem("transactions");
