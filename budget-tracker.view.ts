@@ -1,4 +1,17 @@
-import { Transaction, categories, transactionTypes, transactions } from "./budget-tracker.model.js";
+import { activateForm } from "./budget-tracker.controller.js";
+import {
+  Transaction,
+  TransactionType,
+  categories,
+  transactionTypes,
+  transactions,
+} from "./budget-tracker.model.js";
+
+export function pageLoad() {
+  activateForm();
+  displayTransactions();
+  displaySummary();
+}
 
 export function loadFormFields() {
   const dateInput = document.getElementById("date") as HTMLInputElement;
@@ -18,15 +31,47 @@ export function loadFormFields() {
 }
 
 export function displayTransactions() {
-    const container = document.getElementById("transactionHistory");
-    container!.innerHTML = `${transactions.map(showTransaction).join("\n")}`;
+  const container = document.getElementById("transactionHistory");
+  container!.innerHTML = `${transactions.map(showTransaction).join("\n")}`;
 }
 
 function showTransaction(transaction: Transaction) {
-    return `
+  return `
     <li>${transaction.date}</li>
     <li>${transaction.type}</li>
     <li>${transaction.amount}</li>
     <li>${transaction.category}</li>
     `;
+}
+
+function displaySummary() {
+  const incomeSum = document.getElementById("totalIncome") as HTMLSpanElement;
+  incomeSum.textContent = `${calculateSum("Income")}`;
+
+  const expenseSum = document.getElementById("totalExpense") as HTMLSpanElement;
+  expenseSum.textContent = `-${calculateSum("Expense")}`;
+
+  const balance = document.getElementById("balance") as HTMLSpanElement;
+  balance.textContent = `${calculateSum("Income") - calculateSum("Expense")}`;
+
+  if (calculateSum("Income") - calculateSum("Expense") > 0) {
+    balance.style.color = "green";
+  } else if (calculateSum("Income") - calculateSum("Expense") < 0) {
+    balance.style.color = "red";
+  } else {
+    balance.style.color = "black";
+  }
+}
+
+function calculateSum(type: TransactionType) {
+  let total = 0;
+
+  transactions.forEach((transation) => {
+    if (transation.type === type) {
+      total += transation.amount;
+    }
+  });
+
+  console.log(total);
+  return total;
 }

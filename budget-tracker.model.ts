@@ -14,11 +14,11 @@ export const categories = [
   "Miscellaneous",
 ] as const;
 
-type TransactionType = (typeof transactionTypes)[number];
+export type TransactionType = (typeof transactionTypes)[number];
 export type Category = (typeof categories)[number];
 export interface Transaction {
   type: TransactionType;
-  amount: Number;
+  amount: number;
   category: Category;
   date: Date;
 }

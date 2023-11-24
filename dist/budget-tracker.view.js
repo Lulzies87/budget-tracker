@@ -1,4 +1,10 @@
-import { categories, transactionTypes, transactions } from "./budget-tracker.model.js";
+import { activateForm } from "./budget-tracker.controller.js";
+import { categories, transactionTypes, transactions, } from "./budget-tracker.model.js";
+export function pageLoad() {
+    activateForm();
+    displayTransactions();
+    displaySummary();
+}
 export function loadFormFields() {
     const dateInput = document.getElementById("date");
     dateInput.value = new Date().toISOString().split("T")[0];
@@ -21,4 +27,31 @@ function showTransaction(transaction) {
     <li>${transaction.amount}</li>
     <li>${transaction.category}</li>
     `;
+}
+function displaySummary() {
+    const incomeSum = document.getElementById("totalIncome");
+    incomeSum.textContent = `${calculateSum("Income")}`;
+    const expenseSum = document.getElementById("totalExpense");
+    expenseSum.textContent = `-${calculateSum("Expense")}`;
+    const balance = document.getElementById("balance");
+    balance.textContent = `${calculateSum("Income") - calculateSum("Expense")}`;
+    if (calculateSum("Income") - calculateSum("Expense") > 0) {
+        balance.style.color = "green";
+    }
+    else if (calculateSum("Income") - calculateSum("Expense") < 0) {
+        balance.style.color = "red";
+    }
+    else {
+        balance.style.color = "black";
+    }
+}
+function calculateSum(type) {
+    let total = 0;
+    transactions.forEach((transation) => {
+        if (transation.type === type) {
+            total += transation.amount;
+        }
+    });
+    console.log(total);
+    return total;
 }
