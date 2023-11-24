@@ -21,12 +21,22 @@ export function displayTransactions() {
     container.innerHTML = `${transactions.map(showTransaction).join("\n")}`;
 }
 function showTransaction(transaction) {
-    return `
-    <li>${transaction.date}</li>
-    <li>${transaction.type}</li>
-    <li>${transaction.amount}</li>
-    <li>${transaction.category}</li>
-    `;
+    if (transaction.type === "Income") {
+        return `
+        <li>${transaction.date}</li>
+        <li>${transaction.type}</li>
+        <li style="color: green">${transaction.amount}</li>
+        <li>${transaction.category}</li>
+        `;
+    }
+    else {
+        return `
+        <li>${transaction.date}</li>
+        <li>${transaction.type}</li>
+        <li style="color: red">(${transaction.amount})</li>
+        <li>${transaction.category}</li>
+        `;
+    }
 }
 function displaySummary() {
     const incomeSum = document.getElementById("totalIncome");

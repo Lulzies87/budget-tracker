@@ -36,12 +36,21 @@ export function displayTransactions() {
 }
 
 function showTransaction(transaction: Transaction) {
-  return `
-    <li>${transaction.date}</li>
-    <li>${transaction.type}</li>
-    <li>${transaction.amount}</li>
-    <li>${transaction.category}</li>
-    `;
+  if (transaction.type === "Income") {
+    return `
+        <li>${transaction.date}</li>
+        <li>${transaction.type}</li>
+        <li style="color: green">${transaction.amount}</li>
+        <li>${transaction.category}</li>
+        `;
+  } else {
+    return `
+        <li>${transaction.date}</li>
+        <li>${transaction.type}</li>
+        <li style="color: red">(${transaction.amount})</li>
+        <li>${transaction.category}</li>
+        `;
+  }
 }
 
 function displaySummary() {
